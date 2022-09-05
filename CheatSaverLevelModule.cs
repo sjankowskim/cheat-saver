@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using ThunderRoad;
-using UnityEngine;
 
 namespace CheatSaver
 {
@@ -8,20 +8,18 @@ namespace CheatSaver
     {
         private const string DebugFileName = "DebugOptions.opt";
         private const string DebugFileNameBackup = "DebugOptionsOriginal.opt";
-        private static string modTag = "(Cheat Saver)";
         private static DebugOptions debugOptions;
         private bool isFlipped, skipBackup;
 
         public override IEnumerator OnLoadCoroutine()
         {
-            Debug.Log(modTag + " Loaded successfully!");
             debugOptions = new DebugOptions();
-            EventManager.onLevelLoad += OnLoadEvent;
+            EventManager.onPossess += onPossessionEvent;
             EventManager.onUnpossess += OnUnpossessionEvent;
             return base.OnLoadCoroutine();
         }
 
-        private void OnLoadEvent(LevelData levelData, EventTime eventTime)
+        private void onPossessionEvent(Creature creature, EventTime eventTime)
         {
             if (eventTime == EventTime.OnEnd)
             {
