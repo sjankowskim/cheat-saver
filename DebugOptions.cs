@@ -12,9 +12,11 @@ namespace CheatSaver
         public bool infiniteImbue;
         public bool infiniteArrows;
         public bool fallDamage;
+        public bool selfCollision;
         public bool armorDetection;
         public float slowMotionScale;
         public GameManager.CollisionDebug collisionMarkers;
-        public bool selfCollision;
+        public bool climbFree;
+        public bool easyDismemberment;
     }
 }
